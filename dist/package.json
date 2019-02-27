@@ -23,5 +23,18 @@
     "angular-editor",
     "angular-wysiwyg-editor",
     "wysiwyg-editor"
-  ]
+  ],
+  "main": "bundles/kolkov-angular-editor.umd.js",
+  "module": "fesm5/kolkov-angular-editor.js",
+  "es2015": "fesm2015/kolkov-angular-editor.js",
+  "esm5": "esm5/kolkov-angular-editor.js",
+  "esm2015": "esm2015/kolkov-angular-editor.js",
+  "fesm5": "fesm5/kolkov-angular-editor.js",
+  "fesm2015": "fesm2015/kolkov-angular-editor.js",
+  "typings": "kolkov-angular-editor.d.ts",
+  "metadata": "kolkov-angular-editor.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
 }
