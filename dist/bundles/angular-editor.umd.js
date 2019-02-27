@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/common/http'), require('@angular/core'), require('@angular/forms'), require('@angular/common')) :
-    typeof define === 'function' && define.amd ? define('@kolkov/angular-editor', ['exports', '@angular/common/http', '@angular/core', '@angular/forms', '@angular/common'], factory) :
-    (factory((global.kolkov = global.kolkov || {}, global.kolkov['angular-editor'] = {}),global.ng.common.http,global.ng.core,global.ng.forms,global.ng.common));
+    typeof define === 'function' && define.amd ? define('angular-editor', ['exports', '@angular/common/http', '@angular/core', '@angular/forms', '@angular/common'], factory) :
+    (factory((global['angular-editor'] = {}),global.ng.common.http,global.ng.core,global.ng.forms,global.ng.common));
 }(this, (function (exports,i1,i0,forms,i2) { 'use strict';
 
     /**
@@ -1274,4 +1274,4 @@
 
 })));
 
-//# sourceMappingURL=kolkov-angular-editor.umd.js.map
+//# sourceMappingURL=angular-editor.umd.js.map
