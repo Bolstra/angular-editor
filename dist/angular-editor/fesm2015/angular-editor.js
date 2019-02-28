@@ -985,4 +985,4 @@ AngularEditorModule.decorators = [
 
 export { AngularEditorService, AngularEditorComponent, AngularEditorToolbarComponent, AngularEditorModule };
 
-//# sourceMappingURL=bolstra-angular-editor.js.map
+//# sourceMappingURL=angular-editor.js.map
