@@ -1344,4 +1344,4 @@ var AngularEditorModule = /** @class */ (function () {
 
 export { AngularEditorService, AngularEditorComponent, AngularEditorToolbarComponent, AngularEditorModule };
 
-//# sourceMappingURL=angular-editor.js.map
+//# sourceMappingURL=bolstra-angular-editor.js.map

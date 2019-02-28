@@ -1,13 +1,10 @@
 {
-  "name": "angular-editor",
+  "name": "@bolstra/angular-editor",
   "version": "0.14.1",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>,Sally Xu <sally.xu@bolstra.com>",
   "repository": "github:Bolstra/angular-editor#bolstra",
   "license": "MIT",
   "private": false,
-  "files": [
-    "dist"
-  ],
   "peerDependencies": {
     "@angular/common": ">6.0.0",
     "@angular/core": ">6.0.0",
@@ -26,15 +23,15 @@
     "html-editor",
     "angular-html-editor"
   ],
-  "main": "bundles/angular-editor.umd.js",
-  "module": "fesm5/angular-editor.js",
-  "es2015": "fesm2015/angular-editor.js",
-  "esm5": "esm5/angular-editor.js",
-  "esm2015": "esm2015/angular-editor.js",
-  "fesm5": "fesm5/angular-editor.js",
-  "fesm2015": "fesm2015/angular-editor.js",
-  "typings": "angular-editor.d.ts",
-  "metadata": "angular-editor.metadata.json",
+  "main": "bundles/bolstra-angular-editor.umd.js",
+  "module": "fesm5/bolstra-angular-editor.js",
+  "es2015": "fesm2015/bolstra-angular-editor.js",
+  "esm5": "esm5/bolstra-angular-editor.js",
+  "esm2015": "esm2015/bolstra-angular-editor.js",
+  "fesm5": "fesm5/bolstra-angular-editor.js",
+  "fesm2015": "fesm2015/bolstra-angular-editor.js",
+  "typings": "bolstra-angular-editor.d.ts",
+  "metadata": "bolstra-angular-editor.metadata.json",
   "sideEffects": false,
   "dependencies": {
     "tslib": "^1.9.0"
