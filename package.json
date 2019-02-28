@@ -3,9 +3,6 @@
   "version": "0.14.1",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>,Sally Xu <sally.xu@bolstra.com>",
   "repository": "github:Bolstra/angular-editor#bolstra",
-  "main": "bundles/kolkov-angular-editor.umd.js",
-  "metadata": "kolkov-angular-editor.metadata.json",
-  "module": "fesm5/kolkov-angular-editor.js",
   "license": "MIT",
   "private": false,
   "peerDependencies": {
