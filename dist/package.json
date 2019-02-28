@@ -1,6 +1,6 @@
 {
   "name": "@kolkov/angular-editor",
-  "version": "0.13.1",
+  "version": "0.14.0",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>,Sally Xu <sally.xu@bolstra.com>",
   "repository": "github:Bolstra/angular-editor#bolstra",
   "main": "bundles/kolkov-angular-editor.umd.js",
