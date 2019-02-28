@@ -4,9 +4,6 @@
   "author": "Andrey Kolkov <a.kolkov@gmail.com>,Sally Xu <sally.xu@bolstra.com>",
   "repository": "github:Bolstra/angular-editor#bolstra",
   "license": "MIT",
-  "directories": {
-    "angular-editor": "dist/bolstra/angular-editor/"
-  },
   "private": false,
   "peerDependencies": {
     "@angular/common": ">6.0.0",
