@@ -1344,4 +1344,4 @@ var AngularEditorModule = /** @class */ (function () {
 
 export { AngularEditorService, AngularEditorComponent, AngularEditorToolbarComponent, AngularEditorModule };
 
-//# sourceMappingURL=kolkov-angular-editor.js.map
+//# sourceMappingURL=angular-editor.js.map
