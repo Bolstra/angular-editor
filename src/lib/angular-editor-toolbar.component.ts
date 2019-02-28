@@ -23,6 +23,7 @@ export class AngularEditorToolbarComponent {
 
   customClassId = -1;
   customClasses: CustomClass[];
+  currentTag: any = null;
 
   tagMap = {
     BLOCKQUOTE: 'indent',
@@ -33,6 +34,20 @@ export class AngularEditorToolbarComponent {
 
   buttons = ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'justifyLeft', 'justifyCenter',
     'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertUnorderedList', 'insertOrderedList', 'link'];
+
+  tagGroups = [
+    {name: 'Contact', tags: [
+      {name: 'First Name', field: 'accountUser.firstName'},
+      {name: 'Last Name', field: 'accountUser.lastName'}
+    ]},
+    {name: 'Account', tags: [
+      {name: 'Account Title', field: 'account.title'}
+    ]},
+    {name: 'Activity', tags: [
+      {name: 'Activity Title', field: 'activity.title'},
+      {name: 'Activity Start Date', field: 'activity.startDate'}
+    ]}
+  ];
 
   @Output() execute: EventEmitter<string> = new EventEmitter<string>();
 
@@ -157,6 +172,16 @@ export class AngularEditorToolbarComponent {
     if (url && url !== '' && url !== `https://`) {
       this.editorService.insertVideo(url);
     }
+  }
+
+  /**
+   * insert Vedio link
+   */
+  insertTag() {
+    this.execute.emit('');
+    this.editorService.insertTag(this.currentTag);
+    this.currentTag = null;
+    this.execute.emit('');
   }
 
   /** insert color */

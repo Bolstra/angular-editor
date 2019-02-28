@@ -98,4 +98,5 @@ export declare class AngularEditorComponent implements OnInit, ControlValueAcces
      * Send a node array from the contentEditable of the editor
      */
     exec(): void;
+    onKeyDown(e: KeyboardEvent): boolean;
 }

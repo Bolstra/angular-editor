@@ -84,7 +84,7 @@ export class AngularEditorService {
    * Create raw HTML
    * @param html HTML string
    */
-  private insertHtml(html: string): void {
+  insertHtml(html: string): void {
 
     const isHTMLInserted = this._document.execCommand('insertHTML', false, html);
 
@@ -174,6 +174,20 @@ export class AngularEditorService {
     if (videoUrl.match('vimeo.com')) {
       this.insertVimeoVideoTag(videoUrl);
     }
+  }
+
+  insertTag(tag: any) {
+    if (tag === null) {
+      return;
+    }
+    const tagHtml = `
+      <button id='bolstra.${tag.field}' style='background-color:lightgrey; padding:5px; border-radius: 5px; border-left:5px solid red;'>${tag.name}</button></div><br>
+    `;
+    this.insertHtml(tagHtml);
+  }
+
+  removeMe(eve: any) {
+    alert('here');
   }
 
   setDefaultParagraphSeparator(separator: string) {

@@ -16,12 +16,20 @@ export declare class AngularEditorToolbarComponent {
     fonts: Font[];
     customClassId: number;
     customClasses: CustomClass[];
+    currentTag: any;
     tagMap: {
         BLOCKQUOTE: string;
         A: string;
     };
     select: string[];
     buttons: string[];
+    tagGroups: {
+        name: string;
+        tags: {
+            name: string;
+            field: string;
+        }[];
+    }[];
     execute: EventEmitter<string>;
     myInputFile: ElementRef;
     constructor(_renderer: Renderer2, editorService: AngularEditorService, _document: any);
@@ -46,6 +54,10 @@ export declare class AngularEditorToolbarComponent {
      * insert Vedio link
      */
     insertVideo(): void;
+    /**
+     * insert Vedio link
+     */
+    insertTag(): void;
     /** insert color */
     insertColor(color: string, where: string): void;
     /**

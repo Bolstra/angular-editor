@@ -141,6 +141,18 @@
             (click)="triggerCommand('insertHorizontalRule')" [disabled]="htmlMode" tabindex="-1"><i class="fa fa-minus"></i></button>
   </div>
   <div class="angular-editor-toolbar-set">
+  
+    <select title="Insert Custom Tags" [(ngModel)]="currentTag"
+      (change)="insertTag()"
+      [disabled]="htmlMode" tabindex="-1" style='width: 150px !important'>
+      <option [value]=null>Replacement Tags</option>
+      <optgroup *ngFor="let group of tagGroups" [label]="group.name" style="font-weight: bold">
+        <option *ngFor="let item of group.tags" [ngValue]="item">{{item.name}}</option>
+      </optgroup>
+    </select>
+  </div>
+
+  <div class="angular-editor-toolbar-set">
     <button type="button" title="Clear Formatting" class="angular-editor-button"
             (click)="triggerCommand('removeFormat')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-remove'></i></button>
   </div>
