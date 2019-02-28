@@ -25,5 +25,18 @@
     "wysiwyg-editor",
     "html-editor",
     "angular-html-editor"
-  ]
+  ],
+  "main": "bundles/bolstra-angular-editor.umd.js",
+  "module": "fesm5/bolstra-angular-editor.js",
+  "es2015": "fesm2015/bolstra-angular-editor.js",
+  "esm5": "esm5/bolstra-angular-editor.js",
+  "esm2015": "esm2015/bolstra-angular-editor.js",
+  "fesm5": "fesm5/bolstra-angular-editor.js",
+  "fesm2015": "fesm2015/bolstra-angular-editor.js",
+  "typings": "bolstra-angular-editor.d.ts",
+  "metadata": "bolstra-angular-editor.metadata.json",
+  "sideEffects": false,
+  "dependencies": {
+    "tslib": "^1.9.0"
+  }
 }
