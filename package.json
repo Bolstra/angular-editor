@@ -3,7 +3,6 @@
   "version": "0.13.1",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>",
   "repository": "github:Bolstra/angular-editor#bolstra",
-  "files": [ "dist/" ],
   "license": "MIT",
   "private": false,
   "peerDependencies": {
