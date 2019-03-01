@@ -150,7 +150,7 @@ export class AngularEditorService {
   uploadImage(file: File): Observable<HttpEvent<UploadResponse>> {
 
     const uploadData: FormData = new FormData();
-    
+
     uploadData.append('file', file, file.name);
     return this.http.post<UploadResponse>(this.uploadUrl, uploadData, {
       reportProgress: true,
@@ -163,7 +163,6 @@ export class AngularEditorService {
    * @param imageUrl
    */
   insertImage(imageUrl: string) {
-    console.log('insertImage: ', imageUrl);
     this._document.execCommand('insertImage', false, imageUrl);
   }
 

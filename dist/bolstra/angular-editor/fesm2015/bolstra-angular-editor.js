@@ -168,7 +168,6 @@ class AngularEditorService {
      * @return {?}
      */
     insertImage(imageUrl) {
-        console.log('insertImage: ', imageUrl);
         this._document.execCommand('insertImage', false, imageUrl);
     }
     /**
