@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, NgModule, Component, EventEmitter, Output, Renderer2, ViewChild, forwardRef, Input, defineInjectable, inject } from '@angular/core';
+import { Inject, Injectable, NgModule, Component, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, defineInjectable, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
@@ -264,6 +264,7 @@ var AngularEditorService = /** @class */ (function () {
      * @return {?}
      */
     function (imageUrl) {
+        console.log('insertImage: ', imageUrl);
         this._document.execCommand('insertImage', false, imageUrl);
     };
     /**
@@ -295,19 +296,12 @@ var AngularEditorService = /** @class */ (function () {
             return;
         }
         /** @type {?} */
-        var tagHtml = "\n      <button id='bolstra." + tag.field + "' style='background-color:lightgrey; padding:5px; border-radius: 5px; border-left:5px solid red;'>" + tag.name + "</button></div><br>\n    ";
+        var tagS = tag.object + " -> " + tag.name;
+        /** @type {?} */
+        var size = tagS.length;
+        /** @type {?} */
+        var tagHtml = "\n      <input id='bolstra." + tag.field + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
         this.insertHtml(tagHtml);
-    };
-    /**
-     * @param {?} eve
-     * @return {?}
-     */
-    AngularEditorService.prototype.removeMe = /**
-     * @param {?} eve
-     * @return {?}
-     */
-    function (eve) {
-        alert('here');
     };
     /**
      * @param {?} separator
@@ -451,15 +445,15 @@ var AngularEditorToolbarComponent = /** @class */ (function () {
             'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertUnorderedList', 'insertOrderedList', 'link'];
         this.tagGroups = [
             { name: 'Contact', tags: [
-                    { name: 'First Name', field: 'accountUser.firstName' },
-                    { name: 'Last Name', field: 'accountUser.lastName' }
+                    { name: 'First Name', field: 'accountUser.firstName', object: 'Contact' },
+                    { name: 'Last Name', field: 'accountUser.lastName', object: 'Contact' }
                 ] },
             { name: 'Account', tags: [
-                    { name: 'Account Title', field: 'account.title' }
+                    { name: 'Account Title', field: 'account.title', object: 'Account' }
                 ] },
-            { name: 'Activity', tags: [
-                    { name: 'Activity Title', field: 'activity.title' },
-                    { name: 'Activity Start Date', field: 'activity.startDate' }
+            { name: 'User', tags: [
+                    { name: 'First Name', field: 'accountUser.firstName', object: 'User' },
+                    { name: 'Last Name', field: 'accountUser.lastName', object: 'User' },
                 ] }
         ];
         this.execute = new EventEmitter();
@@ -731,17 +725,15 @@ var AngularEditorToolbarComponent = /** @class */ (function () {
     /**
      * set font Size
      * @param fontSize string
-     *  */
+     */
     /**
      * set font Size
      * @param {?} fontSize string
-     *
      * @return {?}
      */
     AngularEditorToolbarComponent.prototype.setFontSize = /**
      * set font Size
      * @param {?} fontSize string
-     *
      * @return {?}
      */
     function (fontSize) {
@@ -797,6 +789,7 @@ var AngularEditorToolbarComponent = /** @class */ (function () {
              */
             function (e) {
                 if (e instanceof HttpResponse) {
+                    _this.execute.emit('');
                     _this.editorService.insertImage(e.body.imageUrl);
                     _this.fileReset();
                 }

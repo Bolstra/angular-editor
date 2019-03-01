@@ -28,6 +28,7 @@ export declare class AngularEditorToolbarComponent {
         tags: {
             name: string;
             field: string;
+            object: string;
         }[];
     }[];
     execute: EventEmitter<string>;
@@ -68,7 +69,7 @@ export declare class AngularEditorToolbarComponent {
     /**
      * set font Size
      * @param fontSize string
-     *  */
+     */
     setFontSize(fontSize: string): void;
     /**
      * toggle editor mode (WYSIWYG or SOURCE)

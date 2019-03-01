@@ -1,6 +1,6 @@
 {
   "name": "@bolstra/angular-editor",
-  "version": "0.15.1",
+  "version": "0.15.2",
   "author": "Andrey Kolkov <a.kolkov@gmail.com>,Sally Xu <sally.xu@bolstra.com>",
   "repository": "github:Bolstra/angular-editor#bolstra",
   "license": "MIT",

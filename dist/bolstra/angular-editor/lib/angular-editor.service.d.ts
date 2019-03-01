@@ -67,7 +67,6 @@ export declare class AngularEditorService {
     insertImage(imageUrl: string): void;
     insertVideo(videoUrl: string): void;
     insertTag(tag: any): void;
-    removeMe(eve: any): void;
     setDefaultParagraphSeparator(separator: string): void;
     createCustomClass(customClass: CustomClass): void;
     private insertYouTubeVideoTag;

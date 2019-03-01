@@ -168,6 +168,7 @@ class AngularEditorService {
      * @return {?}
      */
     insertImage(imageUrl) {
+        console.log('insertImage: ', imageUrl);
         this._document.execCommand('insertImage', false, imageUrl);
     }
     /**
@@ -191,17 +192,24 @@ class AngularEditorService {
             return;
         }
         /** @type {?} */
+        const tagS = `${tag.object} -> ${tag.name}`;
+        /** @type {?} */
+        const size = tagS.length;
+        /** @type {?} */
         const tagHtml = `
-      <button id='bolstra.${tag.field}' style='background-color:lightgrey; padding:5px; border-radius: 5px; border-left:5px solid red;'>${tag.name}</button></div><br>
+      <input id='bolstra.${tag.field}' value='${tagS}'
+        readonly size=${size}
+        style='background-color:lightgrey;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        border-left:5px solid red;
+        border-right:5px solid red;
+        border-top:0;
+        border-bottom:0;'
+        ></input>
     `;
         this.insertHtml(tagHtml);
-    }
-    /**
-     * @param {?} eve
-     * @return {?}
-     */
-    removeMe(eve) {
-        alert('here');
     }
     /**
      * @param {?} separator
@@ -341,15 +349,15 @@ class AngularEditorToolbarComponent {
             'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertUnorderedList', 'insertOrderedList', 'link'];
         this.tagGroups = [
             { name: 'Contact', tags: [
-                    { name: 'First Name', field: 'accountUser.firstName' },
-                    { name: 'Last Name', field: 'accountUser.lastName' }
+                    { name: 'First Name', field: 'accountUser.firstName', object: 'Contact' },
+                    { name: 'Last Name', field: 'accountUser.lastName', object: 'Contact' }
                 ] },
             { name: 'Account', tags: [
-                    { name: 'Account Title', field: 'account.title' }
+                    { name: 'Account Title', field: 'account.title', object: 'Account' }
                 ] },
-            { name: 'Activity', tags: [
-                    { name: 'Activity Title', field: 'activity.title' },
-                    { name: 'Activity Start Date', field: 'activity.startDate' }
+            { name: 'User', tags: [
+                    { name: 'First Name', field: 'accountUser.firstName', object: 'User' },
+                    { name: 'Last Name', field: 'accountUser.lastName', object: 'User' },
                 ] }
         ];
         this.execute = new EventEmitter();
@@ -558,7 +566,6 @@ class AngularEditorToolbarComponent {
     /**
      * set font Size
      * @param {?} fontSize string
-     *
      * @return {?}
      */
     setFontSize(fontSize) {
@@ -596,6 +603,7 @@ class AngularEditorToolbarComponent {
              */
             e => {
                 if (e instanceof HttpResponse) {
+                    this.execute.emit('');
                     this.editorService.insertImage(e.body.imageUrl);
                     this.fileReset();
                 }

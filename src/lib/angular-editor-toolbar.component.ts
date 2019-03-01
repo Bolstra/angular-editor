@@ -37,15 +37,15 @@ export class AngularEditorToolbarComponent {
 
   tagGroups = [
     {name: 'Contact', tags: [
-      {name: 'First Name', field: 'accountUser.firstName'},
-      {name: 'Last Name', field: 'accountUser.lastName'}
+      {name: 'First Name', field: 'accountUser.firstName', object: 'Contact'},
+      {name: 'Last Name', field: 'accountUser.lastName', object: 'Contact'}
     ]},
     {name: 'Account', tags: [
-      {name: 'Account Title', field: 'account.title'}
+      {name: 'Account Title', field: 'account.title', object: 'Account'}
     ]},
-    {name: 'Activity', tags: [
-      {name: 'Activity Title', field: 'activity.title'},
-      {name: 'Activity Start Date', field: 'activity.startDate'}
+    {name: 'User', tags: [
+      {name: 'First Name', field: 'accountUser.firstName', object: 'User'},
+      {name: 'Last Name', field: 'accountUser.lastName',  object: 'User'},
     ]}
   ];
 
@@ -202,7 +202,7 @@ export class AngularEditorToolbarComponent {
   /**
    * set font Size
    * @param fontSize string
-   *  */
+   */
   setFontSize(fontSize: string): void {
     this.editorService.setFontSize(fontSize);
     this.execute.emit('');
@@ -227,14 +227,15 @@ export class AngularEditorToolbarComponent {
    */
   onFileChanged(event) {
     const file = event.target.files[0];
-      if (file.type.includes('image/')) {
-        this.editorService.uploadImage(file).subscribe(e => {
-          if (e instanceof HttpResponse) {
-            this.editorService.insertImage(e.body.imageUrl);
-            this.fileReset();
-          }
-        });
-      }
+    if (file.type.includes('image/')) {
+      this.editorService.uploadImage(file).subscribe(e => {
+        if (e instanceof HttpResponse) {
+          this.execute.emit('');
+          this.editorService.insertImage(e.body.imageUrl);
+          this.fileReset();
+        }
+      });
+    }
   }
 
   /**

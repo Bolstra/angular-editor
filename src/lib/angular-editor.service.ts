@@ -150,9 +150,8 @@ export class AngularEditorService {
   uploadImage(file: File): Observable<HttpEvent<UploadResponse>> {
 
     const uploadData: FormData = new FormData();
-
+    
     uploadData.append('file', file, file.name);
-
     return this.http.post<UploadResponse>(this.uploadUrl, uploadData, {
       reportProgress: true,
       observe: 'events',
@@ -164,6 +163,7 @@ export class AngularEditorService {
    * @param imageUrl
    */
   insertImage(imageUrl: string) {
+    console.log('insertImage: ', imageUrl);
     this._document.execCommand('insertImage', false, imageUrl);
   }
 
@@ -180,14 +180,22 @@ export class AngularEditorService {
     if (tag === null) {
       return;
     }
+    const tagS = `${tag.object} -> ${tag.name}`;
+    const size = tagS.length;
     const tagHtml = `
-      <button id='bolstra.${tag.field}' style='background-color:lightgrey; padding:5px; border-radius: 5px; border-left:5px solid red;'>${tag.name}</button></div><br>
+      <input id='bolstra.${tag.field}' value='${tagS}'
+        readonly size=${size}
+        style='background-color:lightgrey;
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        border-left:5px solid red;
+        border-right:5px solid red;
+        border-top:0;
+        border-bottom:0;'
+        ></input>
     `;
     this.insertHtml(tagHtml);
-  }
-
-  removeMe(eve: any) {
-    alert('here');
   }
 
   setDefaultParagraphSeparator(separator: string) {
