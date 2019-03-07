@@ -2,7 +2,7 @@ import {Inject, Injectable} from '@angular/core';
 import {HttpClient, HttpEvent} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {DOCUMENT} from '@angular/common';
-import {CustomClass} from './config';
+import {CustomClass, Tag} from './config';
 
 export interface UploadResponse {
   imageUrl: string;
@@ -18,7 +18,7 @@ export class AngularEditorService {
   uploadUrl: string;
 
 
-  constructor(private http: HttpClient, @Inject(DOCUMENT) private _document: any) {
+  constructor(private http: HttpClient, @Inject(DOCUMENT) private document: any) {
   }
 
   /**
@@ -28,10 +28,10 @@ export class AngularEditorService {
   executeCommand(command: string) {
     const commands = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'pre'];
     if (commands.includes(command)) {
-      this._document.execCommand('formatBlock', false, command);
+      this.document.execCommand('formatBlock', false, command);
     }
 
-    this._document.execCommand(command, false, null);
+    this.document.execCommand(command, false, null);
   }
 
   /**
@@ -40,7 +40,7 @@ export class AngularEditorService {
    */
   createLink(url: string) {
     if (!url.includes('http')) {
-      this._document.execCommand('createlink', false, url);
+      this.document.execCommand('createlink', false, url);
     } else {
       const newUrl = `<a href='${url}' target='_blank'>${this.selectedText}</a>`;
       this.insertHtml(newUrl);
@@ -57,9 +57,9 @@ export class AngularEditorService {
     const restored = this.restoreSelection();
     if (restored) {
       if (where === 'textColor') {
-        this._document.execCommand('foreColor', false, color);
+        this.document.execCommand('foreColor', false, color);
       } else {
-        this._document.execCommand('hiliteColor', false, color);
+        this.document.execCommand('hiliteColor', false, color);
       }
     }
   }
@@ -69,7 +69,7 @@ export class AngularEditorService {
    * @param fontName string
    */
   setFontName(fontName: string) {
-    this._document.execCommand('fontName', false, fontName);
+    this.document.execCommand('fontName', false, fontName);
   }
 
   /**
@@ -77,7 +77,7 @@ export class AngularEditorService {
    * @param fontSize string
    */
   setFontSize(fontSize: string) {
-    this._document.execCommand('fontSize', false, fontSize);
+    this.document.execCommand('fontSize', false, fontSize);
   }
 
   /**
@@ -86,7 +86,7 @@ export class AngularEditorService {
    */
   insertHtml(html: string): void {
 
-    const isHTMLInserted = this._document.execCommand('insertHTML', false, html);
+    const isHTMLInserted = this.document.execCommand('insertHTML', false, html);
 
     if (!isHTMLInserted) {
       throw new Error('Unable to perform the operation');
@@ -103,7 +103,7 @@ export class AngularEditorService {
         this.savedSelection = sel.getRangeAt(0);
         this.selectedText = sel.toString();
       }
-    } else if (this._document.getSelection && this._document.createRange) {
+    } else if (this.document.getSelection && this.document.createRange) {
       this.savedSelection = document.createRange();
     } else {
       this.savedSelection = null;
@@ -122,7 +122,7 @@ export class AngularEditorService {
         sel.removeAllRanges();
         sel.addRange(this.savedSelection);
         return true;
-      } else if (this._document.getSelection /*&& this.savedSelection.select*/) {
+      } else if (this.document.getSelection /*&& this.savedSelection.select*/) {
         // this.savedSelection.select();
         return true;
       }
@@ -163,7 +163,7 @@ export class AngularEditorService {
    * @param imageUrl
    */
   insertImage(imageUrl: string) {
-    this._document.execCommand('insertImage', false, imageUrl);
+    this.document.execCommand('insertImage', false, imageUrl);
   }
 
   insertVideo(videoUrl: string) {
@@ -175,14 +175,14 @@ export class AngularEditorService {
     }
   }
 
-  insertTag(tag: any) {
+  insertTag(tag: Tag) {
     if (tag === null) {
       return;
     }
-    const tagS = `${tag.object} -> ${tag.name}`;
+    const tagS = `${tag.groupName} -> ${tag.name}`;
     const size = tagS.length;
     const tagHtml = `
-      <input id='bolstra.${tag.field}' value='${tagS}'
+      <input id='bolstra.${tag.id}' value='${tagS}'
         readonly size=${size}
         style='background-color:lightgrey;
         padding: 5px;
@@ -198,7 +198,7 @@ export class AngularEditorService {
   }
 
   setDefaultParagraphSeparator(separator: string) {
-    this._document.execCommand('defaultParagraphSeparator', false, separator);
+    this.document.execCommand('defaultParagraphSeparator', false, separator);
   }
 
   createCustomClass(customClass: CustomClass) {

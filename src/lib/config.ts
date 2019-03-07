@@ -8,6 +8,11 @@ export interface Font {
   name: string;
   class: string;
 }
+export interface Tag {
+  id: string;
+  name: string;
+  groupName: string;
+}
 
 export interface AngularEditorConfig {
   editable?: boolean;
@@ -27,6 +32,7 @@ export interface AngularEditorConfig {
   uploadUrl?: string;
   fonts?: Font[];
   customClasses?: CustomClass[];
+  tagList?: Tag[];
 }
 
 export const angularEditorConfig: AngularEditorConfig = {
@@ -48,5 +54,5 @@ export const angularEditorConfig: AngularEditorConfig = {
     {class: 'arial', name: 'Arial'},
     {class: 'times-new-roman', name: 'Times New Roman'},
   ],
-  uploadUrl: 'v1/image',
+  uploadUrl: 'v1/image'
 };

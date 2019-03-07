@@ -140,8 +140,7 @@
     <button type="button" title="Horizontal Line" class="angular-editor-button"
             (click)="triggerCommand('insertHorizontalRule')" [disabled]="htmlMode" tabindex="-1"><i class="fa fa-minus"></i></button>
   </div>
-  <div class="angular-editor-toolbar-set">
-  
+  <div *ngIf="tagList" class="angular-editor-toolbar-set">
     <select title="Insert Custom Tags" [(ngModel)]="currentTag"
       (change)="insertTag()"
       [disabled]="htmlMode" tabindex="-1" style='width: 150px !important'>

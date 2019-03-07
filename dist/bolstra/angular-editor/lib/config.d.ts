@@ -7,6 +7,11 @@ export interface Font {
     name: string;
     class: string;
 }
+export interface Tag {
+    id: string;
+    name: string;
+    groupName: string;
+}
 export interface AngularEditorConfig {
     editable?: boolean;
     spellcheck?: boolean;
@@ -25,5 +30,6 @@ export interface AngularEditorConfig {
     uploadUrl?: string;
     fonts?: Font[];
     customClasses?: CustomClass[];
+    tagList?: Tag[];
 }
 export declare const angularEditorConfig: AngularEditorConfig;

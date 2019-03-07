@@ -1,16 +1,16 @@
 import { HttpClient, HttpEvent } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CustomClass } from './config';
+import { CustomClass, Tag } from './config';
 export interface UploadResponse {
     imageUrl: string;
 }
 export declare class AngularEditorService {
     private http;
-    private _document;
+    private document;
     savedSelection: Range | null;
     selectedText: string;
     uploadUrl: string;
-    constructor(http: HttpClient, _document: any);
+    constructor(http: HttpClient, document: any);
     /**
      * Executed command from editor header buttons exclude toggleEditorMode
      * @param command string from triggerCommand
@@ -66,7 +66,7 @@ export declare class AngularEditorService {
      */
     insertImage(imageUrl: string): void;
     insertVideo(videoUrl: string): void;
-    insertTag(tag: any): void;
+    insertTag(tag: Tag): void;
     setDefaultParagraphSeparator(separator: string): void;
     createCustomClass(customClass: CustomClass): void;
     private insertYouTubeVideoTag;

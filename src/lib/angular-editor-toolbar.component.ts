@@ -1,8 +1,9 @@
-import {Component, ElementRef, EventEmitter, Inject, Output, Renderer2, ViewChild} from '@angular/core';
+import {Component, OnInit, ElementRef, EventEmitter, Inject, Input, Output, Renderer2, ViewChild} from '@angular/core';
 import {AngularEditorService} from './angular-editor.service';
 import {HttpResponse} from '@angular/common/http';
 import {DOCUMENT} from '@angular/common';
-import {CustomClass, Font} from './config';
+import {CustomClass, Font, Tag} from './config';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'angular-editor-toolbar',
@@ -10,7 +11,7 @@ import {CustomClass, Font} from './config';
   styleUrls: ['./angular-editor-toolbar.component.scss']
 })
 
-export class AngularEditorToolbarComponent {
+export class AngularEditorToolbarComponent implements OnInit {
   id = '';
   htmlMode = false;
   showToolbar = true;
@@ -23,7 +24,8 @@ export class AngularEditorToolbarComponent {
 
   customClassId = -1;
   customClasses: CustomClass[];
-  currentTag: any = null;
+  currentTag: Tag = null;
+  tagGroups: any[] = [];
 
   tagMap = {
     BLOCKQUOTE: 'indent',
@@ -35,28 +37,31 @@ export class AngularEditorToolbarComponent {
   buttons = ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'justifyLeft', 'justifyCenter',
     'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertUnorderedList', 'insertOrderedList', 'link'];
 
-  tagGroups = [
-    {name: 'Contact', tags: [
-      {name: 'First Name', field: 'accountUser.firstName', object: 'Contact'},
-      {name: 'Last Name', field: 'accountUser.lastName', object: 'Contact'}
-    ]},
-    {name: 'Account', tags: [
-      {name: 'Account Title', field: 'account.title', object: 'Account'}
-    ]},
-    {name: 'User', tags: [
-      {name: 'First Name', field: 'accountUser.firstName', object: 'User'},
-      {name: 'Last Name', field: 'accountUser.lastName',  object: 'User'},
-    ]}
-  ];
+  @Input() tagList: Tag[];
 
   @Output() execute: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('fileInput') myInputFile: ElementRef;
 
-  constructor(private _renderer: Renderer2,
-              private editorService: AngularEditorService, @Inject(DOCUMENT) private _document: any) {
+
+  constructor(private renderer: Renderer2,
+              private editorService: AngularEditorService, @Inject(DOCUMENT) private document: any) {
   }
 
+  ngOnInit() {
+    console.log(this.tagList);
+    if (this.tagList && this.tagList.length > 0) {
+      this.tagList.forEach ( t => {
+        let group = this.tagGroups.find(g => g.name === t.groupName);
+        if (!group) {
+          group = {name: t.groupName, tags: []};
+          this.tagGroups.push(group);
+        }
+        group.tags.push(t);
+      });
+      console.log(this.tagGroups);
+    }
+  }
   /**
    * Trigger command from editor header buttons
    * @param command string from toolbar buttons
@@ -73,12 +78,12 @@ export class AngularEditorToolbarComponent {
       return;
     }
     this.buttons.forEach(e => {
-      const result = this._document.queryCommandState(e);
-      const elementById = this._document.getElementById(e + '-' + this.id);
+      const result = this.document.queryCommandState(e);
+      const elementById = this.document.getElementById(e + '-' + this.id);
       if (result) {
-        this._renderer.addClass(elementById, 'active');
+        this.renderer.addClass(elementById, 'active');
       } else {
-        this._renderer.removeClass(elementById, 'active');
+        this.renderer.removeClass(elementById, 'active');
       }
     });
   }
@@ -143,12 +148,12 @@ export class AngularEditorToolbarComponent {
     }
 
     Object.keys(this.tagMap).map(e => {
-      const elementById = this._document.getElementById(this.tagMap[e] + '-' + this.id);
+      const elementById = this.document.getElementById(this.tagMap[e] + '-' + this.id);
       const node = nodes.find(x => x.nodeName === e);
       if (node !== undefined && e === node.nodeName) {
-        this._renderer.addClass(elementById, 'active');
+        this.renderer.addClass(elementById, 'active');
       } else {
-        this._renderer.removeClass(elementById, 'active');
+        this.renderer.removeClass(elementById, 'active');
       }
     });
   }
@@ -213,11 +218,11 @@ export class AngularEditorToolbarComponent {
    * @param m boolean
    */
   setEditorMode(m: boolean) {
-    const toggleEditorModeButton = this._document.getElementById('toggleEditorMode' + '-' + this.id);
+    const toggleEditorModeButton = this.document.getElementById('toggleEditorMode' + '-' + this.id);
     if (m) {
-      this._renderer.addClass(toggleEditorModeButton, 'active');
+      this.renderer.addClass(toggleEditorModeButton, 'active');
     } else {
-      this._renderer.removeClass(toggleEditorModeButton, 'active');
+      this.renderer.removeClass(toggleEditorModeButton, 'active');
     }
     this.htmlMode = m;
   }

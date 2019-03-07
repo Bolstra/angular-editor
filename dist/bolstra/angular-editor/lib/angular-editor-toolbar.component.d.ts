@@ -1,10 +1,10 @@
-import { ElementRef, EventEmitter, Renderer2 } from '@angular/core';
+import { OnInit, ElementRef, EventEmitter, Renderer2 } from '@angular/core';
 import { AngularEditorService } from './angular-editor.service';
-import { CustomClass, Font } from './config';
-export declare class AngularEditorToolbarComponent {
-    private _renderer;
+import { CustomClass, Font, Tag } from './config';
+export declare class AngularEditorToolbarComponent implements OnInit {
+    private renderer;
     private editorService;
-    private _document;
+    private document;
     id: string;
     htmlMode: boolean;
     showToolbar: boolean;
@@ -16,24 +16,19 @@ export declare class AngularEditorToolbarComponent {
     fonts: Font[];
     customClassId: number;
     customClasses: CustomClass[];
-    currentTag: any;
+    currentTag: Tag;
+    tagGroups: any[];
     tagMap: {
         BLOCKQUOTE: string;
         A: string;
     };
     select: string[];
     buttons: string[];
-    tagGroups: {
-        name: string;
-        tags: {
-            name: string;
-            field: string;
-            object: string;
-        }[];
-    }[];
+    tagList: Tag[];
     execute: EventEmitter<string>;
     myInputFile: ElementRef;
-    constructor(_renderer: Renderer2, editorService: AngularEditorService, _document: any);
+    constructor(renderer: Renderer2, editorService: AngularEditorService, document: any);
+    ngOnInit(): void;
     /**
      * Trigger command from editor header buttons
      * @param command string from toolbar buttons

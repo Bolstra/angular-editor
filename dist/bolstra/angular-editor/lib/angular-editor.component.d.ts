@@ -1,8 +1,8 @@
 import { AfterContentInit, EventEmitter, OnInit, Renderer2 } from '@angular/core';
-import { ControlValueAccessor } from "@angular/forms";
-import { AngularEditorConfig } from "./config";
-import { AngularEditorToolbarComponent } from "./angular-editor-toolbar.component";
-import { AngularEditorService } from "./angular-editor.service";
+import { ControlValueAccessor } from '@angular/forms';
+import { AngularEditorConfig } from './config';
+import { AngularEditorToolbarComponent } from './angular-editor-toolbar.component';
+import { AngularEditorService } from './angular-editor.service';
 export declare class AngularEditorComponent implements OnInit, ControlValueAccessor, AfterContentInit {
     private _renderer;
     private editorService;
