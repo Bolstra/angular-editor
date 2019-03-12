@@ -453,7 +453,6 @@ var AngularEditorToolbarComponent = /** @class */ (function () {
      */
     function () {
         var _this = this;
-        console.log(this.tagList);
         if (this.tagList && this.tagList.length > 0) {
             this.tagList.forEach((/**
              * @param {?} t
@@ -472,7 +471,6 @@ var AngularEditorToolbarComponent = /** @class */ (function () {
                 }
                 group.tags.push(t);
             }));
-            console.log(this.tagGroups);
         }
     };
     /**

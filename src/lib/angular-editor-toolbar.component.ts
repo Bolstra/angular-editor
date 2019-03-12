@@ -49,7 +49,6 @@ export class AngularEditorToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.tagList);
     if (this.tagList && this.tagList.length > 0) {
       this.tagList.forEach ( t => {
         let group = this.tagGroups.find(g => g.name === t.groupName);
@@ -59,7 +58,6 @@ export class AngularEditorToolbarComponent implements OnInit {
         }
         group.tags.push(t);
       });
-      console.log(this.tagGroups);
     }
   }
   /**

@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, NgModule, Component, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, defineInjectable, inject } from '@angular/core';
+import { Inject, Injectable, NgModule, Component, EventEmitter, Input, Output, Renderer2, ViewChild, forwardRef, defineInjectable, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
@@ -353,7 +353,6 @@ class AngularEditorToolbarComponent {
      * @return {?}
      */
     ngOnInit() {
-        console.log(this.tagList);
         if (this.tagList && this.tagList.length > 0) {
             this.tagList.forEach((/**
              * @param {?} t
@@ -372,7 +371,6 @@ class AngularEditorToolbarComponent {
                 }
                 group.tags.push(t);
             }));
-            console.log(this.tagGroups);
         }
     }
     /**

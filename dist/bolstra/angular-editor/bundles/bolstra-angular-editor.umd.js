@@ -915,7 +915,6 @@
          */
             function () {
                 var _this = this;
-                console.log(this.tagList);
                 if (this.tagList && this.tagList.length > 0) {
                     this.tagList.forEach(( /**
                      * @param {?} t
@@ -932,7 +931,6 @@
                         }
                         group.tags.push(t);
                     }));
-                    console.log(this.tagGroups);
                 }
             };
         /**
