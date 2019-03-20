@@ -9,9 +9,9 @@ export interface Font {
   class: string;
 }
 export interface Tag {
-  id: string;
+  propertyName: string;
   name: string;
-  groupName: string;
+  group: string;
 }
 
 export interface AngularEditorConfig {

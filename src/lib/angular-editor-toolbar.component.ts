@@ -51,9 +51,9 @@ export class AngularEditorToolbarComponent implements OnInit {
   ngOnInit() {
     if (this.tagList && this.tagList.length > 0) {
       this.tagList.forEach ( t => {
-        let group = this.tagGroups.find(g => g.name === t.groupName);
+        let group = this.tagGroups.find(g => g.name === t.group);
         if (!group) {
-          group = {name: t.groupName, tags: []};
+          group = {name: t.group, tags: []};
           this.tagGroups.push(group);
         }
         group.tags.push(t);

@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, NgModule, Component, EventEmitter, Input, Output, Renderer2, ViewChild, forwardRef, defineInjectable, inject } from '@angular/core';
+import { Inject, Injectable, NgModule, Component, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, defineInjectable, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
@@ -191,12 +191,12 @@ class AngularEditorService {
             return;
         }
         /** @type {?} */
-        const tagS = `${tag.groupName} -> ${tag.name}`;
+        const tagS = `${tag.group} -> ${tag.name}`;
         /** @type {?} */
         const size = tagS.length;
         /** @type {?} */
         const tagHtml = `
-      <input id='bolstra.${tag.id}' value='${tagS}'
+      <input id='bolstra.${tag.propertyName}' value='${tagS}'
         readonly size=${size}
         style='background-color:lightgrey;
         padding: 5px;
@@ -364,9 +364,9 @@ class AngularEditorToolbarComponent {
                  * @param {?} g
                  * @return {?}
                  */
-                g => g.name === t.groupName));
+                g => g.name === t.group));
                 if (!group) {
-                    group = { name: t.groupName, tags: [] };
+                    group = { name: t.group, tags: [] };
                     this.tagGroups.push(group);
                 }
                 group.tags.push(t);

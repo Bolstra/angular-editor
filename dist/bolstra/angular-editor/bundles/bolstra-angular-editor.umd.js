@@ -296,11 +296,11 @@
                     return;
                 }
                 /** @type {?} */
-                var tagS = tag.groupName + " -> " + tag.name;
+                var tagS = tag.group + " -> " + tag.name;
                 /** @type {?} */
                 var size = tagS.length;
                 /** @type {?} */
-                var tagHtml = "\n      <input id='bolstra." + tag.id + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
+                var tagHtml = "\n      <input id='bolstra." + tag.propertyName + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
                 this.insertHtml(tagHtml);
             };
         /**
@@ -924,9 +924,9 @@
                         var group = _this.tagGroups.find(( /**
                          * @param {?} g
                          * @return {?}
-                         */function (g) { return g.name === t.groupName; }));
+                         */function (g) { return g.name === t.group; }));
                         if (!group) {
-                            group = { name: t.groupName, tags: [] };
+                            group = { name: t.group, tags: [] };
                             _this.tagGroups.push(group);
                         }
                         group.tags.push(t);
