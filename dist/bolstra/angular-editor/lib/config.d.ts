@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 export interface CustomClass {
     name: string;
     class: string;
@@ -30,6 +31,6 @@ export interface AngularEditorConfig {
     uploadUrl?: string;
     fonts?: Font[];
     customClasses?: CustomClass[];
-    tagList?: Tag[];
+    tagList?: Observable<Tag[]>;
 }
 export declare const angularEditorConfig: AngularEditorConfig;

@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 export interface CustomClass {
   name: string;
   class: string;
@@ -32,7 +34,7 @@ export interface AngularEditorConfig {
   uploadUrl?: string;
   fonts?: Font[];
   customClasses?: CustomClass[];
-  tagList?: Tag[];
+  tagList?: Observable<Tag[]>;
 }
 
 export const angularEditorConfig: AngularEditorConfig = {
@@ -53,6 +55,8 @@ export const angularEditorConfig: AngularEditorConfig = {
   fonts: [
     {class: 'arial', name: 'Arial'},
     {class: 'times-new-roman', name: 'Times New Roman'},
+    {class: 'calibri', name: 'Calibri'},
+    {class: 'comic-sans-ms', name: 'Comic Sans MS'}
   ],
   uploadUrl: 'v1/image'
 };

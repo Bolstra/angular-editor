@@ -1,6 +1,7 @@
 import { OnInit, ElementRef, EventEmitter, Renderer2 } from '@angular/core';
 import { AngularEditorService } from './angular-editor.service';
 import { CustomClass, Font, Tag } from './config';
+import { Observable } from 'rxjs';
 export declare class AngularEditorToolbarComponent implements OnInit {
     private renderer;
     private editorService;
@@ -14,6 +15,7 @@ export declare class AngularEditorToolbarComponent implements OnInit {
     fontId: number;
     fontSize: string;
     fonts: Font[];
+    tagList?: Observable<Tag[]>;
     customClassId: number;
     customClasses: CustomClass[];
     currentTag: Tag;
@@ -24,7 +26,6 @@ export declare class AngularEditorToolbarComponent implements OnInit {
     };
     select: string[];
     buttons: string[];
-    tagList: Tag[];
     execute: EventEmitter<string>;
     myInputFile: ElementRef;
     constructor(renderer: Renderer2, editorService: AngularEditorService, document: any);

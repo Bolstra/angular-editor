@@ -74,10 +74,6 @@
             [disabled]="htmlMode" tabindex="-1">
       <optgroup label="Font Name"></optgroup>
       <option *ngFor="let item of fonts; let i = index" [class]="item.class" [value]="i">{{item.name}}</option>
-     <!-- <option class="arial" value="Arial">Arial</option>
-      <option class="calibri" value="Calibri">Calibri</option>
-      <option class="comic-sans-ms" value="Comic Sans MS">Comic Sans MS</option>
-      <option class="times-new-roman" value="Times New Roman">Times New Roman</option>-->
     </select>
   </div>
   <div class="angular-editor-toolbar-set">
@@ -93,6 +89,9 @@
       <option class="size5" value="5">5</option>
       <option class="size6" value="6">6</option>
       <option class="size7" value="7">7</option>
+      <option class="size8" value="8">8</option>
+      <option class="size9" value="9">9</option>
+      <option class="size10" value="10">10</option>
     </select>
   </div>
   <div class="angular-editor-toolbar-set">

@@ -21,6 +21,7 @@ export class AngularEditorToolbarComponent implements OnInit {
   fontId = 0;
   fontSize = '5';
   fonts: Font[];
+  tagList?: Observable<Tag[]>;
 
   customClassId = -1;
   customClasses: CustomClass[];
@@ -37,8 +38,6 @@ export class AngularEditorToolbarComponent implements OnInit {
   buttons = ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'justifyLeft', 'justifyCenter',
     'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertUnorderedList', 'insertOrderedList', 'link'];
 
-  @Input() tagList: Tag[];
-
   @Output() execute: EventEmitter<string> = new EventEmitter<string>();
 
   @ViewChild('fileInput') myInputFile: ElementRef;
@@ -49,14 +48,16 @@ export class AngularEditorToolbarComponent implements OnInit {
   }
 
   ngOnInit() {
-    if (this.tagList && this.tagList.length > 0) {
-      this.tagList.forEach ( t => {
-        let group = this.tagGroups.find(g => g.name === t.group);
-        if (!group) {
-          group = {name: t.group, tags: []};
-          this.tagGroups.push(group);
-        }
-        group.tags.push(t);
+    if (this.tagList ) {
+      this.tagList.subscribe(tags => {
+        tags.forEach(t => {
+          let group = this.tagGroups.find(g => g.name === t.group);
+          if (!group) {
+            group = {name: t.group, tags: []};
+            this.tagGroups.push(group);
+          }
+          group.tags.push(t);
+        });
       });
     }
   }

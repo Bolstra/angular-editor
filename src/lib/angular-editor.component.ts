@@ -39,7 +39,7 @@ export class AngularEditorComponent implements OnInit, ControlValueAccessor, Aft
   showPlaceholder = false;
   @Input() id = '';
   @Input() config: AngularEditorConfig = angularEditorConfig;
-  
+
   @Output() html;
 
   @ViewChild('editor') textArea: any;
@@ -61,6 +61,7 @@ export class AngularEditorComponent implements OnInit, ControlValueAccessor, Aft
     this.editorToolbar.id = this.id;
     this.editorToolbar.fonts = this.config.fonts ? this.config.fonts : angularEditorConfig.fonts;
     this.editorToolbar.customClasses = this.config.customClasses;
+    this.editorToolbar.tagList = this.config.tagList;
     this.editorService.uploadUrl = this.config.uploadUrl;
     if (this.config.showToolbar !== undefined) {
       this.editorToolbar.showToolbar = this.config.showToolbar;
