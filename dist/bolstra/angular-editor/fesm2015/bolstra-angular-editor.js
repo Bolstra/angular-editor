@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, NgModule, Component, EventEmitter, Output, Renderer2, ViewChild, forwardRef, Input, defineInjectable, inject } from '@angular/core';
+import { Inject, Injectable, NgModule, Component, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, defineInjectable, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
@@ -196,7 +196,7 @@ class AngularEditorService {
         const size = tagS.length;
         /** @type {?} */
         const tagHtml = `
-      <input id='bolstra.${tag.propertyName}' value='${tagS}'
+      <input tag='${tag.propertyName}' value='${tagS}'
         readonly size=${size}
         style='background-color:lightgrey;
         padding: 5px;

@@ -300,7 +300,7 @@
                 /** @type {?} */
                 var size = tagS.length;
                 /** @type {?} */
-                var tagHtml = "\n      <input id='bolstra." + tag.propertyName + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
+                var tagHtml = "\n      <input tag='" + tag.propertyName + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
                 this.insertHtml(tagHtml);
             };
         /**

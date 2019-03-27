@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, NgModule, Component, EventEmitter, Output, Renderer2, ViewChild, forwardRef, Input, defineInjectable, inject } from '@angular/core';
+import { Inject, Injectable, NgModule, Component, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, defineInjectable, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
@@ -299,7 +299,7 @@ var AngularEditorService = /** @class */ (function () {
         /** @type {?} */
         var size = tagS.length;
         /** @type {?} */
-        var tagHtml = "\n      <input id='bolstra." + tag.propertyName + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
+        var tagHtml = "\n      <input tag='" + tag.propertyName + "' value='" + tagS + "'\n        readonly size=" + size + "\n        style='background-color:lightgrey;\n        padding: 5px;\n        border-radius: 5px;\n        text-align: center;\n        border-left:5px solid red;\n        border-right:5px solid red;\n        border-top:0;\n        border-bottom:0;'\n        ></input>\n    ";
         this.insertHtml(tagHtml);
     };
     /**

@@ -182,7 +182,7 @@ export class AngularEditorService {
     const tagS = `${tag.group} -> ${tag.name}`;
     const size = tagS.length;
     const tagHtml = `
-      <input id='bolstra.${tag.propertyName}' value='${tagS}'
+      <input tag='${tag.propertyName}' value='${tagS}'
         readonly size=${size}
         style='background-color:lightgrey;
         padding: 5px;
