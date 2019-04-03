@@ -238,6 +238,9 @@ export class AngularEditorComponent implements OnInit, ControlValueAccessor, Aft
     const editableElement = this.textArea.nativeElement;
 
     if (bToSource) {
+      if (!editableElement.innerHTML) {
+        editableElement.innerHTML = ' ';
+      }
       oContent = this._document.createTextNode(editableElement.innerHTML);
       editableElement.innerHTML = '';
 

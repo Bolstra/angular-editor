@@ -1209,6 +1209,9 @@ var AngularEditorComponent = /** @class */ (function () {
         /** @type {?} */
         var editableElement = this.textArea.nativeElement;
         if (bToSource) {
+            if (!editableElement.innerHTML) {
+                editableElement.innerHTML = ' ';
+            }
             oContent = this._document.createTextNode(editableElement.innerHTML);
             editableElement.innerHTML = '';
             /** @type {?} */
