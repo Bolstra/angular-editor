@@ -1243,6 +1243,9 @@ var AngularEditorComponent = /** @class */ (function () {
             editableElement.contentEditable = true;
             this.modeVisual = true;
             this.viewMode.emit(true);
+            if (editableElement.innerHTML === ' ') {
+                editableElement.innerHTML = null;
+            }
             this.onContentChange(editableElement.innerHTML);
             editableElement.focus();
         }

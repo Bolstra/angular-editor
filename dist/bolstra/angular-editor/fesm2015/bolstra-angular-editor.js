@@ -1,5 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Inject, Injectable, NgModule, Component, EventEmitter, forwardRef, Input, Output, Renderer2, ViewChild, defineInjectable, inject } from '@angular/core';
+import { Inject, Injectable, NgModule, Component, EventEmitter, Output, Renderer2, ViewChild, forwardRef, Input, defineInjectable, inject } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DOCUMENT, CommonModule } from '@angular/common';
 
@@ -914,6 +914,9 @@ class AngularEditorComponent {
             editableElement.contentEditable = true;
             this.modeVisual = true;
             this.viewMode.emit(true);
+            if (editableElement.innerHTML === ' ') {
+                editableElement.innerHTML = null;
+            }
             this.onContentChange(editableElement.innerHTML);
             editableElement.focus();
         }
