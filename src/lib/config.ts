@@ -35,6 +35,7 @@ export interface AngularEditorConfig {
   fonts?: Font[];
   customClasses?: CustomClass[];
   tagList?: Observable<Tag[]>;
+  showFullFeature: boolean;
 }
 
 export const angularEditorConfig: AngularEditorConfig = {
@@ -48,6 +49,7 @@ export const angularEditorConfig: AngularEditorConfig = {
   translate: 'yes',
   enableToolbar: true,
   showToolbar: true,
+  showFullFeature: true,
   placeholder: 'Enter text here...',
   defaultParagraphSeparator: '',
   defaultFontName: '',

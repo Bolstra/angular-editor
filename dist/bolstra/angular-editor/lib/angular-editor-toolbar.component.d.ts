@@ -26,6 +26,7 @@ export declare class AngularEditorToolbarComponent implements OnInit {
     };
     select: string[];
     buttons: string[];
+    showFullFeature: boolean;
     execute: EventEmitter<string>;
     myInputFile: ElementRef;
     constructor(renderer: Renderer2, editorService: AngularEditorService, document: any);

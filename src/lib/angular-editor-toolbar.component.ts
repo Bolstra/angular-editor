@@ -4,6 +4,7 @@ import {HttpResponse} from '@angular/common/http';
 import {DOCUMENT} from '@angular/common';
 import {CustomClass, Font, Tag} from './config';
 import {Observable} from 'rxjs';
+import { timeout } from '../../../../../node_modules/@types/q';
 
 @Component({
   selector: 'angular-editor-toolbar',
@@ -37,6 +38,8 @@ export class AngularEditorToolbarComponent implements OnInit {
 
   buttons = ['bold', 'italic', 'underline', 'strikeThrough', 'subscript', 'superscript', 'justifyLeft', 'justifyCenter',
     'justifyRight', 'justifyFull', 'indent', 'outdent', 'insertUnorderedList', 'insertOrderedList', 'link'];
+  
+  @Input() showFullFeature = true;
 
   @Output() execute: EventEmitter<string> = new EventEmitter<string>();
 
@@ -79,10 +82,12 @@ export class AngularEditorToolbarComponent implements OnInit {
     this.buttons.forEach(e => {
       const result = this.document.queryCommandState(e);
       const elementById = this.document.getElementById(e + '-' + this.id);
-      if (result) {
-        this.renderer.addClass(elementById, 'active');
-      } else {
-        this.renderer.removeClass(elementById, 'active');
+      if (elementById) {
+        if (result) {
+          this.renderer.addClass(elementById, 'active');
+        } else {
+          this.renderer.removeClass(elementById, 'active');
+        }
       }
     });
   }
@@ -184,8 +189,7 @@ export class AngularEditorToolbarComponent implements OnInit {
   insertTag() {
     this.execute.emit('');
     this.editorService.insertTag(this.currentTag);
-    this.currentTag = null;
-    this.execute.emit('');
+    setTimeout(() => this.currentTag = null, 1);
   }
 
   /** insert color */

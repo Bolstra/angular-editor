@@ -15,23 +15,28 @@
             (click)="triggerCommand('underline')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-underline'></i></button>
     <button [id]="'strikeThrough-'+id" type="button" title="Strikethrough" class="angular-editor-button"
             (click)="triggerCommand('strikeThrough')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-strikethrough'></i></button>
-    <button [id]="'subscript-'+id" type="button" title="Subscript" class="angular-editor-button"
+    <button *ngIf="showFullFeature" [id]="'subscript-'+id" type="button" title="Subscript" class="angular-editor-button"
             (click)="triggerCommand('subscript')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-subscript'></i></button>
-    <button [id]="'superscript-'+id" type="button" title="Superscript" class="angular-editor-button"
+    <button *ngIf="showFullFeature" [id]="'superscript-'+id" type="button" title="Superscript" class="angular-editor-button"
             (click)="triggerCommand('superscript')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-superscript'></i></button>
   </div>
   <div class="angular-editor-toolbar-set">
     <button [id]="'justifyLeft-'+id" type="button" title="Justify Left" class="angular-editor-button"
-            (click)="triggerCommand('justifyLeft')" [disabled]="htmlMode" tabindex="-1"><i
-      class='fa fa-align-left'></i></button>
+            (click)="triggerCommand('justifyLeft')" [disabled]="htmlMode" tabindex="-1">
+            <i class='fa fa-align-left'></i>
+    </button>
     <button [id]="'justifyCenter-'+id" type="button" title="Justify Center" class="angular-editor-button"
-            (click)="triggerCommand('justifyCenter')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-align-center'></i></button>
+            (click)="triggerCommand('justifyCenter')" [disabled]="htmlMode" tabindex="-1">
+            <i class='fa fa-align-center'></i>
+    </button>
     <button [id]="'justifyRight-'+id" type="button" title="Justify Right" class="angular-editor-button"
             (click)="triggerCommand('justifyRight')" [disabled]="htmlMode" tabindex="-1">
-      <i class='fa fa-align-right'></i></button>
-    <button [id]="'justifyFull-'+id" type="button" title="Justify Full" class="angular-editor-button"
-            (click)="triggerCommand('justifyFull')" [disabled]="htmlMode" tabindex="-1"><i
-      class='fa fa-align-justify'></i></button>
+            <i class='fa fa-align-right'></i>
+    </button>
+    <button *ngIf="showFullFeature" [id]="'justifyFull-'+id" type="button" title="Justify Full" class="angular-editor-button"
+            (click)="triggerCommand('justifyFull')" [disabled]="htmlMode" tabindex="-1">
+            <i class='fa fa-align-justify'></i>
+    </button>
   </div>
   <div class="angular-editor-toolbar-set">
     <button [id]="'indent-'+id" type="button" title="Indent" class="angular-editor-button"
@@ -49,7 +54,7 @@
     <button [id]="'insertOrderedList-'+id" type="button" title="Ordered List" class="angular-editor-button"
             (click)="triggerCommand('insertOrderedList')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-list-ol'></i></button>
   </div>
-  <div class="angular-editor-toolbar-set">
+  <div class="angular-editor-toolbar-set" *ngIf="showFullFeature">
     <label [for]="'heading-'+id" class="block-label" tabindex="-1"></label>
     <select title="Formatting" [id]="'heading-'+id" class="select-heading" [(ngModel)]="block"
             (change)="triggerCommand(block)"
@@ -108,7 +113,7 @@
     <button [id]="'backgroundColorPicker-'+id" type="button" class="angular-editor-button" (click)="bgInput.click()" title="Background Color"
             [disabled]="htmlMode" tabindex="-1"><span class="color-label background"><i class="fa fa-font"></i></span></button>
   </div>
-  <div *ngIf="customClasses" class="angular-editor-toolbar-set">
+  <div *ngIf="showFullFeature" class="angular-editor-toolbar-set">
     <label [for]="'customClassSelector-'+id" class="block-label"></label>
     <select title="Custom Style" [id]="'customClassSelector-'+id" class="select-custom-style" [(ngModel)]="customClassId"
             (change)="setCustomClass(customClassId)"
@@ -140,18 +145,17 @@
             (click)="triggerCommand('insertHorizontalRule')" [disabled]="htmlMode" tabindex="-1"><i class="fa fa-minus"></i></button>
   </div>
   <div *ngIf="tagList" class="angular-editor-toolbar-set">
-    <select title="Insert Custom Tags" [(ngModel)]="currentTag"
-      (change)="insertTag()"
+    <select title="Insert Custom Tags"  [(ngModel)]="currentTag" (ngModelChange)="insertTag()" 
       [disabled]="htmlMode" tabindex="-1" style='width: 150px !important'>
-      <option [value]=null>Replacement Tags</option>
+      <option [ngValue]="null">Replacement Tags</option>
       <optgroup *ngFor="let group of tagGroups" [label]="group.name" style="font-weight: bold">
-        <option *ngFor="let item of group.tags" [ngValue]="item">{{item.name}}</option>
+        <option *ngFor="let tag of group.tags" [ngValue]="tag">{{tag.name}}</option>
       </optgroup>
     </select>
   </div>
 
   <div class="angular-editor-toolbar-set">
-    <button type="button" title="Clear Formatting" class="angular-editor-button"
+    <button *ngIf="showFullFeature" type="button" title="Clear Formatting" class="angular-editor-button"
             (click)="triggerCommand('removeFormat')" [disabled]="htmlMode" tabindex="-1"><i class='fa fa-remove'></i></button>
   </div>
   <div class="angular-editor-toolbar-set">
