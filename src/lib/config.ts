@@ -35,7 +35,7 @@ export interface AngularEditorConfig {
   fonts?: Font[];
   customClasses?: CustomClass[];
   tagList?: Observable<Tag[]>;
-  showFullFeature: boolean;
+  showFullFeature?: boolean;
 }
 
 export const angularEditorConfig: AngularEditorConfig = {
