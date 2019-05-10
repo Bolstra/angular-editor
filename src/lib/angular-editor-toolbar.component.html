@@ -1,11 +1,5 @@
 <div class="angular-editor-toolbar" *ngIf="showToolbar">
   <div class="angular-editor-toolbar-set">
-    <button type="button" title="Undo" class="angular-editor-button" (click)="triggerCommand('undo')" tabindex="-1"><i
-      class='fa fa-undo'></i></button>
-    <button type="button" title="Redo" class="angular-editor-button" (click)="triggerCommand('redo')" tabindex="-1"><i
-      class='fa fa-repeat'></i></button>
-  </div>
-  <div class="angular-editor-toolbar-set">
     <button [id]="'bold-'+id" type="button" title="Bold" class="angular-editor-button" (click)="triggerCommand('bold')"
             [disabled]="htmlMode" tabindex="-1"><i class='fa fa-bold'></i></button>
     <button [id]="'italic-'+id" type="button" title="Italic" class="angular-editor-button"
@@ -161,5 +155,12 @@
   <div class="angular-editor-toolbar-set">
     <button [id]="'toggleEditorMode-'+id" type="button" title="HTML Code" class="angular-editor-button"
             (click)="triggerCommand('toggleEditorMode')" tabindex="-1"><i class='fa fa-code'></i></button>
+  </div>
+  
+  <div class="angular-editor-toolbar-set">
+    <button type="button" title="Undo" class="angular-editor-button" (click)="triggerCommand('undo')" tabindex="-1"><i
+      class='fa fa-undo'></i></button>
+    <button type="button" title="Redo" class="angular-editor-button" (click)="triggerCommand('redo')" tabindex="-1"><i
+      class='fa fa-repeat'></i></button>
   </div>
 </div>
