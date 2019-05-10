@@ -1,4 +1,4 @@
-@import "style";
+@import "bolstra.style";
 
 .angular-editor {
   position: relative;
@@ -14,15 +14,16 @@
     position: relative;
 
     .angular-editor-textarea {
+      margin-top: 5px;
       min-height: 5rem;
       padding: 0.5rem 0.8rem 1rem 0.8rem;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
+      border-radius: 5px;
       background-color: transparent;
       overflow-x: hidden;
       overflow-y: auto;
       z-index: 2;
       position: relative;
-
       &:focus,
       &.focus {
         outline: 0;

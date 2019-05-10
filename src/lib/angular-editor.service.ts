@@ -184,10 +184,9 @@ export class AngularEditorService {
     const tagHtml = `
       <input tag='${tag.propertyName}' value='${tagS}'
         readonly size=${size}
-        style='background-color:lightgrey;
+        style='background-color:#ccc;
         padding: 5px;
         border-radius: 5px;
-        text-align: center;
         border-left:5px solid red;
         border-right:5px solid red;
         border-top:0;
