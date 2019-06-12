@@ -304,11 +304,4 @@ export class AngularEditorComponent implements OnInit, ControlValueAccessor, Aft
     }
     this.editorToolbar.triggerBlocks(els);
   }
-
-  onKeyDown(e: KeyboardEvent) {
-    if (e.code === 'Enter') {
-      this.editorService.insertHtml('<br><br>');
-      return false;
-    }
-  }
 }

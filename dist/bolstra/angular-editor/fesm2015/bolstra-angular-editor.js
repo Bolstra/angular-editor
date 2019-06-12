@@ -952,21 +952,11 @@ class AngularEditorComponent {
         }
         this.editorToolbar.triggerBlocks(els);
     }
-    /**
-     * @param {?} e
-     * @return {?}
-     */
-    onKeyDown(e) {
-        if (e.code === 'Enter') {
-            this.editorService.insertHtml('<br><br>');
-            return false;
-        }
-    }
 }
 AngularEditorComponent.decorators = [
     { type: Component, args: [{
                 selector: 'angular-editor',
-                template: "<div (focus)=\"onEditorFocus()\" class=\"angular-editor\" id=\"angularEditor\" [style.width]=\"config.width\"\n     [style.minWidth]=\"config.minWidth\">\n  <angular-editor-toolbar #editorToolbar \n    (execute)=\"executeCommand($event)\">\n  </angular-editor-toolbar>\n\n  <div class=\"angular-editor-wrapper\" #editorWrapper>\n    <div #editor class=\"angular-editor-textarea\" \n      [attr.contenteditable]=\"config.editable\"\n      [attr.translate]=\"config.translate\"\n      [attr.spellcheck]=\"config.spellcheck\" \n      [style.height]=\"config.height\" \n      [style.minHeight]=\"config.minHeight\" \n      [style.maxHeight]=\"config.maxHeight\"\n      (input)=\"onContentChange($event.target.innerHTML)\" \n      (focus)=\"onTextAreaFocus()\" \n      (blur)=\"onTextAreaBlur($event)\" \n      (click)=\"exec()\" \n      (keyup)=\"exec()\" \n      (keydown)=\"onKeyDown($event)\">\n    </div>\n    <span class=\"angular-editor-placeholder\">{{ placeholder || config['placeholder'] }}</span>\n  </div>\n</div>\n",
+                template: "<div (focus)=\"onEditorFocus()\" class=\"angular-editor\" id=\"angularEditor\" [style.width]=\"config.width\"\n     [style.minWidth]=\"config.minWidth\">\n  <angular-editor-toolbar #editorToolbar \n    (execute)=\"executeCommand($event)\">\n  </angular-editor-toolbar>\n\n  <div class=\"angular-editor-wrapper\" #editorWrapper>\n    <div #editor class=\"angular-editor-textarea\" \n      [attr.contenteditable]=\"config.editable\"\n      [attr.translate]=\"config.translate\"\n      [attr.spellcheck]=\"config.spellcheck\" \n      [style.height]=\"config.height\" \n      [style.minHeight]=\"config.minHeight\" \n      [style.maxHeight]=\"config.maxHeight\"\n      (input)=\"onContentChange($event.target.innerHTML)\" \n      (focus)=\"onTextAreaFocus()\" \n      (blur)=\"onTextAreaBlur($event)\" \n      (click)=\"exec()\" \n      (keyup)=\"exec()\" \n      >\n    </div>\n    <span class=\"angular-editor-placeholder\">{{ placeholder || config['placeholder'] }}</span>\n  </div>\n</div>\n",
                 providers: [
                     {
                         provide: NG_VALUE_ACCESSOR,
